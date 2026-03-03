@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --primary: #f8fafc;
+  --accent: #06b6d4;
+  --accent-glow: rgba(6, 182, 212, 0.3);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-card-bg1: rgba(255, 255, 255, 0.9);
+  --glass-card-bg2: rgba(241, 245, 249, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-border-hover: rgba(6, 182, 212, 0.5);
+  --text-color: #1e293b;
+}
+
+.dark {
+  --primary: #0f172a;
+  --glass-bg: rgba(30, 41, 59, 0.75);
+  --glass-card-bg1: rgba(30, 41, 59, 0.8);
+  --glass-card-bg2: rgba(15, 23, 42, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-hover: rgba(6, 182, 212, 0.5);
+  --text-color: #e2e8f0;
+}
+
+/* ─── Base ─────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--primary);
+  color: var(--text-color);
+}
+
+/* ─── Animated gradient background ─────── */
+.gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.10) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.10) 0%, transparent 40%);
+  animation: pulseBg 15s ease-in-out infinite;
+}
+
+/* Light-mode gradient is more subtle / lighter */
+:root .gradient-bg {
+  background:
+    radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
+}
+
+@keyframes pulseBg {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* ─── Floating Particles ────────────────── */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(6, 182, 212, 0.6);
+  border-radius: 50%;
+  animation: floatUp 20s infinite linear;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* ─── Glassmorphism ─────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, var(--glass-card-bg1) 0%, var(--glass-card-bg2) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(6, 182, 212, 0.20);
+  /* Kept original cyan tint for borders */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+}
+
+/* ─── Brand glow ───────────────────────── */
+.brand-glow {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+}
+
+/* ─── Live pulse ring ───────────────────── */
+.pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #06b6d4;
+  animation: ripple 2s infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* ─── Custom scrollbar ──────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #06b6d4;
+  border-radius: 3px;
+}
+
+/* ─── ECG animation ─────────────────────── */
+.ecg-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawECG 3s linear infinite;
+}
+
+@keyframes drawECG {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ─── Nav underline ─────────────────────── */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #06b6d4;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ─── Feature icon spin ─────────────────── */
+.feature-icon {
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.glass-card:hover .feature-icon {
+  transform: rotate(360deg) scale(1.1);
+}
+
+/* ─── Dashboard mockup ──────────────────── */
+.dashboard-mockup {
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.stat-card {
+  background: rgba(6, 182, 212, 0.10);
+  border: 1px solid rgba(6, 182, 212, 0.30);
+}
