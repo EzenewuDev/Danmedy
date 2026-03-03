@@ -16,15 +16,15 @@ const navItems = [
     },
     {
         label: 'Technology',
-        href: '/#technology',
+        href: '/technology',
     },
     {
         label: 'Dashboard',
-        href: '/#dashboard',
+        href: '/dashboard',
     },
     {
         label: 'Security',
-        href: '/#security',
+        href: '/security',
     },
 ];
 

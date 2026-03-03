@@ -36,6 +36,17 @@ body {
   color: var(--text-color);
 }
 
+/* Improve tap responsiveness and remove iOS tap highlight */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Keep anchored sections visible below fixed navbar */
+section[id] {
+  scroll-margin-top: 84px;
+}
+
 /* ─── Animated gradient background ─────── */
 .gradient-bg {
   position: fixed;

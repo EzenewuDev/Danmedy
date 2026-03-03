@@ -8,13 +8,16 @@ import Workflow from '@/components/Workflow';
 import Security from '@/components/Security';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
+import FAQ from '@/components/FAQ';
+import ScrollReset from '@/components/ScrollReset';
 
 export default function Home() {
   return (
     <>
       <Background />
       <Navbar />
-      <main>
+      <main className="px-4 sm:px-6">
+        <ScrollReset />
         <Hero />
         <Features />
         <Technology />
@@ -22,6 +25,7 @@ export default function Home() {
         <Workflow />
         <Security />
         <CTA />
+        <FAQ />
       </main>
       <Footer />
     </>

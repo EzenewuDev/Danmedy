@@ -1,8 +1,30 @@
 'use client';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Hero() {
+    const [bpm, setBpm] = useState(72);
+
+    useEffect(() => {
+        const baseline = 72;
+        const min = 60;
+        const max = 92;
+        const start = Date.now();
+        const interval = setInterval(() => {
+            setBpm((prev) => {
+                const t = (Date.now() - start) / 1000;
+                const resp = Math.sin((2 * Math.PI * t) / 5) * 1.2;
+                const jitter = (Math.random() - 0.5) * 1.4;
+                const pull = (baseline - prev) * 0.15;
+                const next = Math.round(prev + pull + resp * 0.25 + jitter);
+                return Math.max(min, Math.min(max, next));
+            });
+        }, 900);
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -70,7 +92,7 @@ export default function Hero() {
                         </div>
 
                         {/* Stats */}
-                        <div className="flex items-center gap-8 pt-6 border-t border-slate-800">
+                        <div className="flex items-center gap-8 pt-6 border-t border-slate-200 dark:border-slate-800">
                             <div>
                                 <div className="text-3xl font-bold dark:text-white text-slate-900 font-display">98.5%</div>
                                 <div className="text-xs text-slate-400 mt-0.5">Diagnostic Accuracy</div>
@@ -112,7 +134,7 @@ export default function Hero() {
                                     className="animate-spin" style={{ animationDuration: '3s' }} />
                             </svg>
                             <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <div className="text-5xl font-bold dark:text-white text-slate-900 font-display">72</div>
+                                <div className="text-5xl font-bold dark:text-white text-slate-900 font-display tabular-nums">{bpm}</div>
                                 <div className="text-cyan-400 text-sm font-medium tracking-wider">BPM</div>
                             </div>
                         </div>

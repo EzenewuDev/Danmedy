@@ -15,7 +15,7 @@ export default function Workflow() {
 
                     <div className="grid md:grid-cols-4 gap-8">
                         <div className="relative text-center workflow-step">
-                            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-slate-800 border border-cyan-500/50 flex items-center justify-center relative z-10 shadow-xl shadow-cyan-500/20">
+                            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-cyan-500/50 flex items-center justify-center relative z-10 shadow-xl shadow-cyan-500/20">
                                 <span className="text-3xl font-bold text-cyan-400">01</span>
                             </div>
                             <h3 className="dark:text-white text-slate-900 font-bold text-lg mb-2">Patient Onboarding</h3>
@@ -23,7 +23,7 @@ export default function Workflow() {
                         </div>
 
                         <div className="relative text-center workflow-step">
-                            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-slate-800 border border-purple-500/50 flex items-center justify-center relative z-10 shadow-xl shadow-purple-500/20">
+                            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-purple-500/50 flex items-center justify-center relative z-10 shadow-xl shadow-purple-500/20">
                                 <span className="text-3xl font-bold text-purple-400">02</span>
                             </div>
                             <h3 className="dark:text-white text-slate-900 font-bold text-lg mb-2">AI Assessment</h3>
@@ -31,7 +31,7 @@ export default function Workflow() {
                         </div>
 
                         <div className="relative text-center workflow-step">
-                            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-slate-800 border border-emerald-500/50 flex items-center justify-center relative z-10 shadow-xl shadow-emerald-500/20">
+                            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-emerald-500/50 flex items-center justify-center relative z-10 shadow-xl shadow-emerald-500/20">
                                 <span className="text-3xl font-bold text-emerald-400">03</span>
                             </div>
                             <h3 className="dark:text-white text-slate-900 font-bold text-lg mb-2">Remote Consultation</h3>
@@ -39,7 +39,7 @@ export default function Workflow() {
                         </div>
 
                         <div className="relative text-center workflow-step">
-                            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-slate-800 border border-pink-500/50 flex items-center justify-center relative z-10 shadow-xl shadow-pink-500/20">
+                            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-pink-500/50 flex items-center justify-center relative z-10 shadow-xl shadow-pink-500/20">
                                 <span className="text-3xl font-bold text-pink-400">04</span>
                             </div>
                             <h3 className="dark:text-white text-slate-900 font-bold text-lg mb-2">Continuous Monitoring</h3>

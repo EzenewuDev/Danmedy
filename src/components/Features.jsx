@@ -12,8 +12,8 @@ export default function Features() {
                 </div>
 
                 {/* Our specialists — doctorA & doctorB */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 p-6 rounded-2xl bg-slate-800/40 dark:bg-slate-800/40 border border-slate-700/50">
-                    <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">Trusted by specialists</p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 p-6 rounded-2xl bg-white/60 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50">
+                    <p className="text-slate-600 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Trusted by specialists</p>
                     <div className="flex items-center gap-4">
                         <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-cyan-500/30 flex-shrink-0">
                             <Image src="/doctorA.jpeg" alt="DanMedy specialist" fill className="object-cover" sizes="64px" />
@@ -22,7 +22,7 @@ export default function Features() {
                             <Image src="/doctorB.jpeg" alt="DanMedy specialist" fill className="object-cover" sizes="64px" />
                         </div>
                     </div>
-                    <p className="text-slate-300 text-sm">Board-certified doctors on the DanMedy platform</p>
+                    <p className="text-slate-700 dark:text-slate-300 text-sm">Board-certified doctors on the DanMedy platform</p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">

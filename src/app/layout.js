@@ -2,6 +2,9 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import AuthNotice from "@/components/AuthNotice";
+import BackToTop from "@/components/BackToTop";
+import SplashGate from "@/components/SplashGate";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,15 +35,20 @@ export default function RootLayout({ children }) {
         {hasClerk ? (
           <ClerkProvider>
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-              {children}
+              <SplashGate>
+                {children}
+              </SplashGate>
+              <AuthNotice />
+              <BackToTop />
             </ThemeProvider>
           </ClerkProvider>
         ) : (
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <div className="w-full bg-amber-50 dark:bg-amber-900/20 border-b border-amber-200 dark:border-amber-800/40 px-4 py-2 text-center text-xs text-amber-700 dark:text-amber-400">
-              Authentication is currently disabled or not configured.
-            </div>
-            {children}
+            <SplashGate>
+              {children}
+            </SplashGate>
+            <AuthNotice />
+            <BackToTop />
           </ThemeProvider>
         )}
       </body>

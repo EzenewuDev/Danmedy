@@ -61,10 +61,10 @@ export default function Technology() {
                             </div>
 
                             <div className="space-y-4">
-                                <div className="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl border border-slate-700">
+                                <div className="flex items-center justify-between p-4 bg-white/60 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
                                     <div className="flex items-center space-x-3">
                                         <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                                        <span className="text-slate-300 font-mono text-sm">Neural Network Status</span>
+                                        <span className="text-slate-700 dark:text-slate-300 font-mono text-sm">Neural Network Status</span>
                                     </div>
                                     <span className="text-green-400 font-mono text-sm">ONLINE</span>
                                 </div>
@@ -86,18 +86,18 @@ export default function Technology() {
                                     </div>
                                 </div>
 
-                                <div className="p-4 bg-slate-800/30 rounded-xl border border-slate-700">
+                                <div className="p-4 bg-white/60 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-700">
                                     <div className="text-slate-400 text-xs mb-3 font-mono">REAL-TIME PROCESSING</div>
                                     <div className="space-y-2">
                                         <div className="flex justify-between text-sm">
-                                            <span className="text-slate-300">Image Analysis</span>
+                                            <span className="text-slate-700 dark:text-slate-300">Image Analysis</span>
                                             <span className="text-cyan-400">Processing...</span>
                                         </div>
                                         <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
                                             <div className="h-full bg-cyan-400 rounded-full animate-pulse" style={{ width: '75%' }}></div>
                                         </div>
                                         <div className="flex justify-between text-sm">
-                                            <span className="text-slate-300">Symptom Check</span>
+                                            <span className="text-slate-700 dark:text-slate-300">Symptom Check</span>
                                             <span className="text-emerald-400">Complete</span>
                                         </div>
                                         <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
