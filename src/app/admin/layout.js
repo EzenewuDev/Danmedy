@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { auth } from '@clerk/nextjs/server';
 
 export default async function AdminLayout({ children }) {
-    const hasClerk = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && !!process.env.CLERK_SECRET_KEY;
+    const disableAuth = process.env.NEXT_PUBLIC_DISABLE_AUTH === '1';
+    const hasClerk = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && !!process.env.CLERK_SECRET_KEY && !disableAuth;
     if (hasClerk) {
         const val = await auth();
         const userId = val?.userId;
