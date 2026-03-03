@@ -1,14 +1,15 @@
-import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { auth } from '@clerk/nextjs/server';
 
 export default async function AdminLayout({ children }) {
-    // Use await auth() in Next.js 15+ Clerk, but for standard compatibility let's just use auth()
-    const val = await auth();
-    const userId = val?.userId;
-
-    if (!userId) {
-        redirect('/sign-in');
+    const hasClerk = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && !!process.env.CLERK_SECRET_KEY;
+    if (hasClerk) {
+        const val = await auth();
+        const userId = val?.userId;
+        if (!userId) {
+            redirect('/sign-in');
+        }
     }
 
     return (
