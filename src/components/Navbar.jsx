@@ -33,6 +33,7 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [activeMenu, setActiveMenu] = useState(null);
     const menuRef = useRef(null);
+    const hasClerk = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
     // When scrolled, navbar bg is dark slate-900, so text must always be white.
     // When at top, respect dark/light mode.
@@ -169,24 +170,28 @@ export default function Navbar() {
                             {/* Theme Toggle */}
                             <ThemeToggle />
 
-                            <SignedIn>
-                                <Link
-                                    href="/admin"
-                                    className={`hidden md:block px-4 py-2 text-sm font-medium ${linkColor} hover:bg-white/5 rounded-lg transition-all`}
-                                >
-                                    Admin
-                                </Link>
-                                <UserButton afterSignOutUrl="/" />
-                            </SignedIn>
+                            {hasClerk ? (
+                                <SignedIn>
+                                    <Link
+                                        href="/admin"
+                                        className={`hidden md:block px-4 py-2 text-sm font-medium ${linkColor} hover:bg-white/5 rounded-lg transition-all`}
+                                    >
+                                        Admin
+                                    </Link>
+                                    <UserButton afterSignOutUrl="/" />
+                                </SignedIn>
+                            ) : null}
 
-                            <SignedOut>
-                                <Link href="/sign-in" className={`hidden md:block text-sm font-medium ${linkColor} px-4 py-2 rounded-lg hover:bg-white/5 transition-all`}>
-                                    Sign in
-                                </Link>
-                                <Link href="/sign-up" className="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-full transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/30 text-sm">
-                                    Get Started
-                                </Link>
-                            </SignedOut>
+                            {hasClerk ? (
+                                <SignedOut>
+                                    <Link href="/sign-in" className={`hidden md:block text-sm font-medium ${linkColor} px-4 py-2 rounded-lg hover:bg-white/5 transition-all`}>
+                                        Sign in
+                                    </Link>
+                                    <Link href="/sign-up" className="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-full transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/30 text-sm">
+                                        Get Started
+                                    </Link>
+                                </SignedOut>
+                            ) : null}
 
                             {/* Mobile hamburger */}
                             <button
@@ -238,11 +243,13 @@ export default function Navbar() {
                             </Link>
                         ))}
                         <div className="pt-4 border-t border-slate-800 space-y-3">
-                            <SignedOut>
-                                <Link href="/sign-up" className="block w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl text-sm text-center">
-                                    Get Started
-                                </Link>
-                            </SignedOut>
+                            {hasClerk ? (
+                                <SignedOut>
+                                    <Link href="/sign-up" className="block w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl text-sm text-center">
+                                        Get Started
+                                    </Link>
+                                </SignedOut>
+                            ) : null}
                         </div>
                     </div>
                 </div>
