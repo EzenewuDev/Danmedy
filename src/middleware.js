@@ -7,13 +7,12 @@ const disabled =
   process.env.CLERK_MIDDLEWARE_DISABLED === "1" ||
   process.env.NEXT_PUBLIC_DISABLE_AUTH === "1";
 
-// Define public routes (adjust these to match your app)
 const isPublicRoute = createRouteMatcher(["/", "/sign-in(.*)", "/sign-up(.*)"]);
 
 export default hasClerk && !disabled
-  ? clerkMiddleware((auth, request) => {
+  ? clerkMiddleware(async (auth, request) => {
       if (!isPublicRoute(request)) {
-        auth().protect();
+        await auth.protect();
       }
     })
   : function middleware() {
